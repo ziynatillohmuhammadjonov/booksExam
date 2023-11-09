@@ -1,10 +1,11 @@
 // import
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // components
-import { Login } from "./components/";
+import { Login, Navbar } from "./components/";
 // constants
 import { bgRectangle } from "./images/";
 import { Container, createTheme, ThemeProvider } from "@mui/material";
+import Signin from "./components/Signin";
 function App() {
   const theme = createTheme({
     typography: {

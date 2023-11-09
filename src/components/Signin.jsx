@@ -2,7 +2,7 @@ import { Card, CardContent, Container, Typography } from "@mui/material";
 import { fIcon, gIcon } from "../images";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Signin() {
   return (
     <div>
       <Container
@@ -21,7 +21,7 @@ function Login() {
               variant="h5"
               sx={{ fontWeight: 700, marginBottom: "24px" }}
             >
-              Sign up
+              Sign in
             </Typography>
             <button className="flex justify-center items-center w-[100%] py-3 px-6 border rounded text-base mb-4">
               <img src={gIcon} alt="google icon" className="mr-4" />
@@ -67,7 +67,7 @@ function Login() {
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
-              <div className="mb-9">
+              <div className="mb-4">
                 <label
                   htmlFor="subject"
                   className="mb-1 block text-sm font-medium text-[#07074D]"
@@ -82,13 +82,27 @@ function Login() {
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
-
-              <button className="flex justify-center items-center w-[100%] py-3 px-6 border rounded text-base mb-4 bg-[#6200ee] text-white">
+              <div className="mb-4">
+                <label
+                  htmlFor="subject"
+                  className="mb-1 block text-sm font-medium text-[#07074D]"
+                >
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  name="subject"
+                  id="password"
+                  placeholder="Enter your password"
+                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+              <button className="flex justify-center items-center w-[100%] py-[10px] px-6 border rounded text-base mb-3 bg-[#6200ee] text-white">
                 Button
               </button>
               <p className="text-center">
                 Already signed up?
-                <Link className="text-[#6200ee]">Go to sign in.</Link>
+                <Link className="text-[#6200ee]"> Go to sign in.</Link>
               </p>
             </form>
           </CardContent>
@@ -98,4 +112,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signin;
