@@ -1,8 +1,33 @@
 import { Card, CardContent, Container, Typography } from "@mui/material";
 import { fIcon, gIcon } from "../images";
 import { Link } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Login() {
+  const [token, setToken] = useState("");
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => setToken(tokenResponse.access_token),
+  });
+  useEffect(() => {
+    if (token) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [token]);
   return (
     <div>
       <Container
@@ -23,7 +48,10 @@ function Login() {
             >
               Sign up
             </Typography>
-            <button className="flex justify-center items-center w-[100%] py-3 px-6 border rounded text-base mb-4">
+            <button
+              onClick={() => login()}
+              className="flex justify-center items-center w-[100%] py-3 px-6 border rounded text-base mb-4"
+            >
               <img src={gIcon} alt="google icon" className="mr-4" />
               Continue with Google
             </button>
